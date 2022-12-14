@@ -23,7 +23,7 @@
     <mat-dialog-actions style="display: flex; flex-direction: row; justify-content: space-between;">
       <button mat-raised-button color="black" type="submit" (click)="toggleValidate(); handleAdd()"
         [disabled]="!(locationForm.valid && locationForm.dirty)">Add</button>
-      <button mat-raised-button color="black" [disabled]="!isValidateEnabled">Validate</button>
+      <button mat-raised-button color="black" (click)="handleValidate()" [disabled]="!isValidateEnabled">Validate</button>
     </mat-dialog-actions>
   </div>
 </div>

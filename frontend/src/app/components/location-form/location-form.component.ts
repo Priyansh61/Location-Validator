@@ -66,4 +66,7 @@ export class LocationFormComponent implements OnInit {
     this.tableData = new MatTableDataSource([this.data]);
   }
 
+  async handleValidate() {
+    const currentLocation  = await this.locationService.getCurrentLocation();
+  }
 }
