@@ -16,6 +16,22 @@ export class LocationService {
     });
   }
 
+  getCurrentLocation() {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(position => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+
+        const json = {
+          latitude: lat,
+          longitude: lng
+        };
+        resolve(json);
+      }, error => {
+        reject(error);
+      });
+    });
+  }
 
 }
 
