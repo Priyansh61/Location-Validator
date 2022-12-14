@@ -15,5 +15,15 @@
     3.4. But soon realised its not a good way to save the long and lat, therfore i used a trigger event of (onSelectionChange) and saved the location which the user clicks.
     3.5. From the location we take out the longitude and latitude.
 
-4. With all the interface and the add button working, its time to connect our backend to g
+4. With all the interface and the add button working, its time to connect our backend to frontend.
+    4.1. The biggest struggle i faced here is while handling with cors , i dont know but  my requests from front end were not able to reach the backend and they were in constant queue.
+    4.2. Actually after a lot of debugging i realised that i made a small spelling mistake while writing the domain but after fixing that it was a smooth walk.
+
+5. Now the backend is connected and we can store data in our mongoDB schema, using mongoose.
+
+6. So with all the above done, we can now show the user input data in the form of the table.
+    6.1. To perform this task i have used mat-table to dispaly the data
+    6.2. In the mat-table we have provided the data we obtain from the form controls.
+
+7. Its time to work on the validate button,
 
