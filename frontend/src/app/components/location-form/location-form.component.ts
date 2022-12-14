@@ -68,5 +68,32 @@ export class LocationFormComponent implements OnInit {
 
   async handleValidate() {
     const currentLocation  = await this.locationService.getCurrentLocation();
+    // Lets find the distance between current location and the location in the table
+
+    const distance = this.haversineDistance(currentLocation, this.data);
+    if (distance <= this.data.radius) {
+      alert("You are within the radius");
+    }
+    else {
+      alert("You are outside the radius");
+    }
   }
+
+  haversineDistance(coords1:any, coords2:any) {
+    const earthRadius = 6371; // radius of the Earth in kilometers
+    const lat1 = coords1.latitude * (Math.PI / 180);
+    const lat2 = coords2.latitude * (Math.PI / 180);
+    const lon1 = coords1.longitude * (Math.PI / 180);
+    const lon2 = coords2.longitude * (Math.PI / 180);
+  
+    const a = Math.pow(Math.sin((lat2 - lat1) / 2), 2) +
+              Math.cos(lat1) * Math.cos(lat2) *
+              Math.pow(Math.sin((lon2 - lon1) / 2), 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  
+    return earthRadius * c;
+  }
+  
+
+
 }
