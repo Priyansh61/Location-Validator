@@ -23,8 +23,6 @@ app.use((req, res, next) => {
     next();
 });
 
-const server = http.createServer(app);
-server.listen(3000, () => console.log('Server running on port 3000'));
 
 
 
@@ -40,6 +38,9 @@ app.post('/add', (req, res) => {
         .then(() => res.send('Location added to database'))
         .catch(err => res.send(err));
 });
+
+const server = http.createServer(app);
+server.listen(3000, () => console.log('Server running on port 3000 on railway'));
 
 
 
