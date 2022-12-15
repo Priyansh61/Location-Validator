@@ -14,7 +14,7 @@ export class LocationService {
     // set hader and console log response
     return this.http.post(this.url + '/add', data, {
       headers: new HttpHeaders({
-        'Content-Type': 'text/plain'
+        'Content-Type': 'application/json'
       })
     }).subscribe(res => {
       console.log(res);
