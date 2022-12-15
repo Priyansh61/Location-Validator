@@ -39,7 +39,7 @@ app.post('/add', (req, res) => {
         radius: data.radius
     });
     newPlace.save()
-        .then(() => res.send('Location added to database'))
+        .then(() => res.status(200).json({ message: 'Place added successfully' }))
         .catch(err => res.send(err));
 });
 
