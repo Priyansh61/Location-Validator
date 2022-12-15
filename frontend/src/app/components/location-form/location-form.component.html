@@ -9,13 +9,14 @@
             {{location.display_name}}
           </mat-option>
         </mat-autocomplete>
-        <mat-error class="error">
+
+        <mat-error *ngIf="locationForm.controls.location.touched" class="error">
           <span *ngIf="locationForm.controls.location.hasError('required')">
             Location is required
           </span>
         </mat-error>
         <input matInput placeholder="Radius (km)" formControlName="radius" required>
-        <mat-error class="error">
+        <mat-error *ngIf="locationForm.controls.radius.touched" class="error">
           <span *ngIf="locationForm.controls.radius.hasError('required')">
             Radius is required
           </span>

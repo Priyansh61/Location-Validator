@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  uri: 'http://localhost:3000'
+  uri: 'https://location-validator-production.up.railway.app'
 };
 
 /*
