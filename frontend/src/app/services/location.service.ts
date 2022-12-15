@@ -12,7 +12,7 @@ export class LocationService {
 
   addLocation(data: any) {
     // set hader and console log response
-    return this.http.post(this.url + 'location', data, {
+    return this.http.post(this.url + '/add', data, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
