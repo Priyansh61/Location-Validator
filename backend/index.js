@@ -7,17 +7,26 @@ const { access } = require('fs');
 
 const app = express();
 
-const server = http.createServer(app);
-server.listen(3000, () => console.log('Server running on port 3000'));
-
 app.use(express.json());
 app.use(cors({
     credentials: true,
-    origin: ['https://location-validator-production-a0a2.up.railway.app'],
-    accessControlAllowOrigin: 'https://location-validator-production-a0a2.up.railway.app',
-    accessControlAllowHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-    accessControlAllowMethods: 'PUT, POST, PATCH, DELETE, GET'
+    origin: ['https://location-validator-production-a0a2.up.railway.app/'],
 }));
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+        return res.status(200).json({});
+    }
+    next();
+});
+
+const server = http.createServer(app);
+server.listen(3000, () => console.log('Server running on port 3000'));
+
+
 
 app.post('/add', (req, res) => {
     var data = req.body;
