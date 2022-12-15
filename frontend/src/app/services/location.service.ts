@@ -11,11 +11,14 @@ export class LocationService {
   constructor(private http: HttpClient) { }
 
   addLocation(data: any) {
-    return this.http.post(`${this.url}/add`, data),{
+    // set hader and console log response
+    return this.http.post(this.url + 'location', data, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
-    }
+    }).subscribe(res => {
+      console.log(res);
+    });
   }
 
 
