@@ -3,6 +3,7 @@ const connection = require('./connection')
 const cors = require('cors');
 const place = require('./schema')
 const http = require('http');
+const { access } = require('fs');
 
 const app = express();
 
@@ -11,21 +12,12 @@ server.listen(3000, () => console.log('Server running on port 3000'));
 
 app.use(express.json());
 app.use(cors({
-    credentials:true,
-    origin:["https://location-validator-production-a0a2.up.railway.app"]
+    credentials: true,
+    origin: ['https://location-validator-production-a0a2.up.railway.app'],
+    accessControlAllowOrigin: 'https://location-validator-production-a0a2.up.railway.app',
+    accessControlAllowHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+    accessControlAllowMethods: 'PUT, POST, PATCH, DELETE, GET'
 }));
-
-// add access control allow origin from https://location-validator-production.up.railway.app
-
-app.use((req, res, next) => {
-    res.header.add('Access-Control-Allow-Origin', '*');
-    res.header.add('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    if (req.method === 'OPTIONS') {
-        res.header.add('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-        return res.status(200).json({});
-    }
-    next();
-});
 
 app.post('/add', (req, res) => {
     var data = req.body;
