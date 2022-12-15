@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({
     credentials: true,
-    origin: ['https://location-validator-production-a0a2.up.railway.app/'],
+    origin: '*'
 }));
 
 app.use((req, res, next) => {
