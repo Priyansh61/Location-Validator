@@ -11,10 +11,13 @@ export class LocationService {
   constructor(private http: HttpClient) { }
 
   addLocation(data: any) {
-    return this.http.post(`${this.url}/add`, data).subscribe((res: any) => {
-      console.log(res);
-    });
+    return this.http.post(`${this.url}/add`, data),{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
   }
+
 
   getCurrentLocation() {
     return new Promise((resolve, reject) => {
