@@ -9,7 +9,7 @@ Follow these steps to set up the local environment for the location validator ap
 
 ## Step 1: Make a Fork and Clone the repository
 
-Make a fork and Clone the location validator repository to your local machine using Git:
+Make a fork and Clone the location validator repository to your local machine using Git: 
 
 ```  console 
    git clone git@github.com:<username>/Location-Validator.git
